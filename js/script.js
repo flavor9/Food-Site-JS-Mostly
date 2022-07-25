@@ -1,40 +1,41 @@
 "use strict";
 
  
-const numberOfFilms = +prompt("How many movies did you watch?", "");
+// const usdCurr = 19;
+// const eurCurr = 20;
 
-const personalMovieDB = {
-	count: numberOfFilms,
-	movies:{},
-	actors:{},
-	geners:[],
-	privat: false
+// const discount = 0.9;
 
-};
+// function convert(amount, curr) {
+// 	return curr * amount;
+// }
 
-question: for (let i = 0; i < 2; i++) {
-	const a = prompt("Last movie you watched", ""),
-		  b = prompt("Rate it from 1 to 10", "");
+// function promotion(result) {
+// 	console.log(result * discount);
+// }
 
-	if (a != " " && b != " " && a != null && b != null && a.length < 50) {
-		personalMovieDB.movies[a] = b;
-		console.log("done!");
-	} else {
-		console.log("wtf man");
-		i--;
+// promotion(convert(500, usdCurr));
+// promotion(convert(500, eurCurr));
+
+
+function getMathResult(number, times) {
+	if (typeof(times) !== 'number' || times <= 0) {
+		return number;
 	}
+
+	let str = " ";
+
+	for (let i = 1; i <= times; i++) {
+		if (i === times) {
+			str += `${number * i}`;
+		} else {
+			str += `${number * i}---`;
+		} 
+
+		
+	}
+	return str;
 	
 }
 
-if (personalMovieDB.count < 10) {
-	console.log("Not a lot of movies watched");
-} else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
-	console.log("Clasical watcher");
-} else if (personalMovieDB.count >= 30) {
-	console.log("Movie man");
-} else {
-	console.log("Error");
-}
-
-
-console.log(personalMovieDB);
+console.log(getMathResult(3, 10)); 
