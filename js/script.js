@@ -1,41 +1,73 @@
 "use strict";
 
- 
-// const usdCurr = 19;
-// const eurCurr = 20;
+let numberOfFilms;
 
-// const discount = 0.9;
+function start() {
+	numberOfFilms = +prompt("How many movies did you watch?", "");
 
-// function convert(amount, curr) {
-// 	return curr * amount;
-// }
-
-// function promotion(result) {
-// 	console.log(result * discount);
-// }
-
-// promotion(convert(500, usdCurr));
-// promotion(convert(500, eurCurr));
-
-
-function getMathResult(number, times) {
-	if (typeof(times) !== 'number' || times <= 0) {
-		return number;
+	while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+		numberOfFilms = +prompt("How many movies did you watch?", "");
 	}
-
-	let str = " ";
-
-	for (let i = 1; i <= times; i++) {
-		if (i === times) {
-			str += `${number * i}`;
-		} else {
-			str += `${number * i}---`;
-		} 
-
-		
-	}
-	return str;
-	
 }
 
-console.log(getMathResult(3, 10)); 
+start();
+
+const personalMovieDB = {
+	count: numberOfFilms,
+	movies:{},
+	actors:{},
+	geners:[],
+	privat: false
+
+};
+
+
+function rememberMyFilms() {
+	for (let i = 0; i < 2; i++) {
+		const a = prompt("Last movie you watched", ""),
+			  b = prompt("Rate it from 1 to 10", "");
+	
+		if (a != " " && b != " " && a != null && b != null && a.length < 50) {
+			personalMovieDB.movies[a] = b;
+			console.log("done!");
+		} else {
+			console.log("wtf man");
+			i--;
+		}
+		
+	}
+}
+
+// rememberMyFilms();
+
+function detectPersonalLevel() {
+	if (personalMovieDB.count < 10) {
+		console.log("Not a lot of movies watched");
+	} else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+		console.log("Clasical watcher");
+	} else if (personalMovieDB.count >= 30) {
+		console.log("Movie man");
+	} else {
+		console.log("Error");
+	}
+}
+
+// detectPersonalLevel();
+
+function showMyDB() {
+	if (!personalMovieDB.privat) {
+		return personalMovieDB;
+	}
+}
+
+showMyDB();
+
+function writeYourGenres() {
+	for (let i = 1; i <= 3; i++) {
+		personalMovieDB.geners[i - 1] = prompt(`Your favorite genre ${i}`,"")
+	}
+}
+
+writeYourGenres();
+
+console.log(showMyDB());
