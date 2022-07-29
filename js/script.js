@@ -1,73 +1,79 @@
 "use strict";
 
-let numberOfFilms;
+// function calculateVolumeAndArea(edge) {
+// 	if (typeof(edge) !== 'number' || edge <= 0 || !Number.isInteger(edge)) {
+// 		return "Error";
 
-function start() {
-	numberOfFilms = +prompt("How many movies did you watch?", "");
+// 	}
 
-	while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
-		numberOfFilms = +prompt("How many movies did you watch?", "");
-	}
-}
+// 	let result = ``;
+// 	const volume = Math.pow(edge, 3);
+// 	const area = 6 * Math.pow(edge, 2);
+// 	result = `Volume: ${volume}, Full Area: ${area}`;
 
-start();
+// 	return result;
 
-const personalMovieDB = {
-	count: numberOfFilms,
-	movies:{},
-	actors:{},
-	geners:[],
-	privat: false
+// }
 
-};
+// console.log(calculateVolumeAndArea(5)); 
 
 
-function rememberMyFilms() {
-	for (let i = 0; i < 2; i++) {
-		const a = prompt("Last movie you watched", ""),
-			  b = prompt("Rate it from 1 to 10", "");
+// function getCoupeNumber(place) {
+// 	if (place === 0 || place > 36) {
+// 		return "There are no seats like that";
+// 	}
+
+// 	if(typeof(place) !== 'number' || place < 0 || !Number.isInteger(place)) {
+// 		return "Error, wtf is this";
+// 	}
+
+// 	for (let i = 4; i <= 36; i = i + 4) {
+// 		if (place <= i) {
+// 			return Math.ceil(i / 4);
+// 		}
+// 	}
+// }
+
+// console.log(getCoupeNumber(55)); 
+
+// function getTimeFromMinutes(totalMinutes) {
+// 	if (typeof(totalMinutes) !== 'number' || !Number.isInteger(totalMinutes) || totalMinutes < 0) {
+// 		return "Error";
+// 	}
+
+// 	if (totalMinutes > 600) {
+// 		return "Too much :(";
+// 	}
+
+// 	const hours = Math.floor(totalMinutes / 60);
+// 	const minutes = totalMinutes % 60;
+
+// 	let result = "";
+
+// 	if (hours === 1){
+// 		result = `It's ${hours} hour and ${minutes} minutes`;
+// 		return result;
+// 	} else if (hours < 1 || hours > 1) {
+// 		result = `It's ${hours} hours and ${minutes} minutes`;
+// 		return result;
+// 	}
 	
-		if (a != " " && b != " " && a != null && b != null && a.length < 50) {
-			personalMovieDB.movies[a] = b;
-			console.log("done!");
-		} else {
-			console.log("wtf man");
-			i--;
-		}
-		
-	}
-}
+	
+	
+// }
 
-// rememberMyFilms();
+//  console.log(getTimeFromMinutes(150)); 
 
-function detectPersonalLevel() {
-	if (personalMovieDB.count < 10) {
-		console.log("Not a lot of movies watched");
-	} else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
-		console.log("Clasical watcher");
-	} else if (personalMovieDB.count >= 30) {
-		console.log("Movie man");
+
+function findMaxNumber(a, b, c, d) {
+	if (typeof(a) !== 'number' ||
+		typeof(b) !== 'number' ||
+		typeof(c) !== 'number' ||
+		typeof(d) !== 'number') {
+			return 0;
 	} else {
-		console.log("Error");
+		return Math.max(a, b, c, d);
 	}
 }
 
-// detectPersonalLevel();
-
-function showMyDB() {
-	if (!personalMovieDB.privat) {
-		return personalMovieDB;
-	}
-}
-
-showMyDB();
-
-function writeYourGenres() {
-	for (let i = 1; i <= 3; i++) {
-		personalMovieDB.geners[i - 1] = prompt(`Your favorite genre ${i}`,"")
-	}
-}
-
-writeYourGenres();
-
-console.log(showMyDB());
+console.log(findMaxNumber(1, 5, 6.6, 10.5)); 
