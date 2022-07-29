@@ -1,79 +1,132 @@
 "use strict";
 
-// function calculateVolumeAndArea(edge) {
-// 	if (typeof(edge) !== 'number' || edge <= 0 || !Number.isInteger(edge)) {
-// 		return "Error";
+// const obj = {
+// 	a: 5,
+// 	b: 1 
+// };
 
+// const copy = obj; 
+
+// function copy(mainObject) {
+// 	let objCopy = {};
+
+// 	let key;
+// 	for (key in mainObject) {
+// 		objCopy[key] = mainObject[key];
 // 	}
 
-// 	let result = ``;
-// 	const volume = Math.pow(edge, 3);
-// 	const area = 6 * Math.pow(edge, 2);
-// 	result = `Volume: ${volume}, Full Area: ${area}`;
-
-// 	return result;
-
+// 	return objCopy;
 // }
 
-// console.log(calculateVolumeAndArea(5)); 
-
-
-// function getCoupeNumber(place) {
-// 	if (place === 0 || place > 36) {
-// 		return "There are no seats like that";
+// const numbers = {
+// 	a: 2,
+// 	b: 5,
+// 	c: {
+// 		x: 7,
+// 		y: 4
 // 	}
+// };
 
-// 	if(typeof(place) !== 'number' || place < 0 || !Number.isInteger(place)) {
-// 		return "Error, wtf is this";
-// 	}
+// const newNumbers = copy(numbers);
 
-// 	for (let i = 4; i <= 36; i = i + 4) {
-// 		if (place <= i) {
-// 			return Math.ceil(i / 4);
-// 		}
-// 	}
+// newNumbers.a = 10;
+
+// console.log(newNumbers);
+// console.log(numbers);
+
+// const add = {
+// 	d: 17,
+// 	e: 20
+// };
+
+// const clone = Object.assign({}, add);
+
+
+// clone.d = 20;
+
+// console.log(add);
+// console.log(clone);
+
+// const oldArray = ['a', 'b', 'c'];
+// const newArray = oldArray.slice();
+
+// newArray[1] = 'Bum'
+
+// console.log(newArray);
+// console.log(oldArray);
+
+// const video = ['youtube', 'vimeo', 'rutube'],
+// 	  blogs = ['wordpress', 'livejournal', 'blogger'],
+// 	  internet = [...video, ...blogs, 'vk', 'facebook'];
+
+// console.log(internet);
+
+// function log(a, b, c) {
+// 	console.log(a);
+// 	console.log(b);
+// 	console.log(c);
 // }
 
-// console.log(getCoupeNumber(55)); 
+// const num = [2, 5, 7];
 
-// function getTimeFromMinutes(totalMinutes) {
-// 	if (typeof(totalMinutes) !== 'number' || !Number.isInteger(totalMinutes) || totalMinutes < 0) {
-// 		return "Error";
-// 	}
+// log(...num);
 
-// 	if (totalMinutes > 600) {
-// 		return "Too much :(";
-// 	}
+// const arry = ["a", "b"];
+// const newArrray = [...arry];
 
-// 	const hours = Math.floor(totalMinutes / 60);
-// 	const minutes = totalMinutes % 60;
+// const q = {
+// 	one: 1,
+// 	two: 2
+// };
 
-// 	let result = "";
-
-// 	if (hours === 1){
-// 		result = `It's ${hours} hour and ${minutes} minutes`;
-// 		return result;
-// 	} else if (hours < 1 || hours > 1) {
-// 		result = `It's ${hours} hours and ${minutes} minutes`;
-// 		return result;
-// 	}
-	
-	
-	
-// }
-
-//  console.log(getTimeFromMinutes(150)); 
+// const newQ = {...q};
 
 
-function findMaxNumber(a, b, c, d) {
-	if (typeof(a) !== 'number' ||
-		typeof(b) !== 'number' ||
-		typeof(c) !== 'number' ||
-		typeof(d) !== 'number') {
-			return 0;
-	} else {
-		return Math.max(a, b, c, d);
-	}
+const perosnalPlanPeter = {
+	name: "Peter",
+	age: "29",
+	skills: {
+		languages: ['ru', 'eng'],
+		programmingLangs: {
+			js: '20%',
+			php: '10%'
+		},
+		exp: '1 month'
+	},
+	 showAgeAndLangs: function(plan) {
+		let answer = '';
+
+		const {age} = plan;
+		const {languages} = plan.skills;
+
+		answer = `I'm ${age} and I know:`;
+
+		languages.forEach(function(lang) {
+			answer += `${lang.toUpperCase()}`;
+		});
+		return answer;
+	 }
+	 
+};
+
+console.log(perosnalPlanPeter.showAgeAndLangs(perosnalPlanPeter)); 
+
+function showExperience(plan) {
+	const {exp} = plan.skills;
+	return exp;
 }
 
-console.log(findMaxNumber(1, 5, 6.6, 10.5)); 
+console.log(showExperience(perosnalPlanPeter)); 
+
+function showProgrammingLangs(plan) {
+	let str = '';
+
+	const {programmingLangs} = plan.skills;
+
+	for (let key in programmingLangs) {
+		str += `Language ${key} is studied ${programmingLangs[key]};\n`;
+	}
+	return str;
+}
+
+console.log(showProgrammingLangs(perosnalPlanPeter));
