@@ -82,51 +82,81 @@
 // const newQ = {...q};
 
 
-const perosnalPlanPeter = {
-	name: "Peter",
-	age: "29",
-	skills: {
-		languages: ['ru', 'eng'],
-		programmingLangs: {
-			js: '20%',
-			php: '10%'
-		},
-		exp: '1 month'
-	},
-	 showAgeAndLangs: function(plan) {
-		let answer = '';
+// const perosnalPlanPeter = {
+// 	name: "Peter",
+// 	age: "29",
+// 	skills: {
+// 		languages: ['ru', 'eng'],
+// 		programmingLangs: {
+// 			js: '20%',
+// 			php: '10%'
+// 		},
+// 		exp: '1 month'
+// 	},
+// 	 showAgeAndLangs: function(plan) {
+// 		let str = '';
 
-		const {age} = plan;
-		const {languages} = plan.skills;
+// 		const {age} = plan;
+// 		const {languages} = plan.skills;
 
-		answer = `I'm ${age} and I know:`;
+// 		str += `I'm ${age} and I know: `;
 
-		languages.forEach(function(lang) {
-			answer += `${lang.toUpperCase()}`;
-		});
-		return answer;
-	 }
-	 
-};
+// 		languages.forEach(function(language){
+// 			str += `${language.toUpperCase()} `;
+// 		});
+// 		return str;
+// 	 }
+// };
 
-console.log(perosnalPlanPeter.showAgeAndLangs(perosnalPlanPeter)); 
+// console.log(perosnalPlanPeter.showAgeAndLangs(perosnalPlanPeter)); 
 
-function showExperience(plan) {
-	const {exp} = plan.skills;
-	return exp;
-}
+// function showExperience(plan) {
+// 	const {exp} = plan.skills;
+// 	return exp;
+// }
 
-console.log(showExperience(perosnalPlanPeter)); 
+// console.log(showExperience(perosnalPlanPeter)); 
 
-function showProgrammingLangs(plan) {
+// function showProgrammingLangs(plan) {
+// 	let str = '';
+// 	const {programmingLangs} = plan.skills;
+
+// 	for (let key in programmingLangs) {
+// 		str += `Language ${key} is learned ${programmingLangs[key]};\n`;
+// 	}
+// 	return str;
+// }
+
+// console.log(showProgrammingLangs(perosnalPlanPeter));
+
+const family = ['Peter', 'Ann', 'Alex', 'Linda'];
+
+function showFamily(arr) {
 	let str = '';
 
-	const {programmingLangs} = plan.skills;
-
-	for (let key in programmingLangs) {
-		str += `Language ${key} is studied ${programmingLangs[key]};\n`;
+	if (arr.length !== 0) {
+		str = 'Family: ';
+	} else {
+		str = 'No family(';
 	}
+
+	arr.forEach(member => {
+		str += `${member} `;
+	});
+
 	return str;
 }
 
-console.log(showProgrammingLangs(perosnalPlanPeter));
+console.log(showFamily(family));
+
+
+const favoriteCities = ['liSbon', 'ROME', 'miLan', 'Dublin'];
+
+function standardizeStrings(arr) {
+	arr.forEach(element => {
+		console.log(element.toLowerCase());
+	});
+
+}
+
+standardizeStrings(favoriteCities);
