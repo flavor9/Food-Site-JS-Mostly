@@ -1,75 +1,138 @@
 "use strict";
 
-const personalMovieDB = {
-	count: 0,
-	movies:{},
-	actors:{},
-	geners:[],
-	privat: false,
-	start: function() {
-		personalMovieDB.count = +prompt("How many movies did you watch?", "");
+// const shoppingMallData = {
+// 	shops: [
+// 		{
+// 			width: 10,
+// 			length: 5
+// 		},
+// 		{
+// 			width: 15,
+// 			length: 7
+// 		},
+// 		{
+// 			width: 20,
+// 			length: 5
+// 		},
+// 		{
+// 			width: 8,
+// 			length: 10
+// 		}
+// 	],
+// 	height: 5,
+// 	moneyPer1m3: 30,
+// 	budget: 50000
+// };
 
-	while (personalMovieDB.count == '' || personalMovieDB.count == null || isNaN(personalMovieDB.count)) {
-		personalMovieDB.count = +prompt("How many movies did you watch?", "");
-	}
-	},
-	rememberMyFilms: function() {
-		for (let i = 0; i < 2; i++) {
-		const a = prompt("Last movie you watched", ""),
-			  b = prompt("Rate it from 1 to 10", "");
+// function isBudgetEnough(data) {
+// 	let square = 0;
+// 	let volume = 0;
+
+// 	data.shops.forEach(shop => {
+// 		square += shop.width * shop.length;
+// 	});
+
+// 	volume = data.height * square;
+
+// 	if (data.budget >= volume * data.moneyPer1m3 ) {
+// 		console.log("Enough budget");
+// 	} else {
+// 		console.log("Not enough budget");
+// 	}
+
+// 	console.log(square);
+// 	console.log(volume);
+
 	
-		if (a != " " && b != " " && a != null && b != null && a.length < 50) {
-			personalMovieDB.movies[a] = b;
-			console.log("done!");
-		} else {
-			console.log("wtf man");
-			i--;
-		}
-		
-	}
-	},
-	detectPersonalLevel: function() {
-		if (personalMovieDB.count < 10) {
-		console.log("Not a lot of movies watched");
-	} else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
-		console.log("Clasical watcher");
-	} else if (personalMovieDB.count >= 30) {
-		console.log("Movie man");
-	} else {
-		console.log("Error");
-	}
-	},
-	showMyDB: function() {
-		if (!personalMovieDB.privat) {
-		return personalMovieDB;
-	}
-	},
-	toggleVisibleMyDB: function() {
-		if (personalMovieDB.privat) {
-			personalMovieDB.privat = false;
-		} else {
-			personalMovieDB.privat = true;
-		}
-	},
-	writeYourGenres: function() {
-		for (let i = 1; i <= 3; i++) {
-			let genre = prompt(`Your favorite genre ${i}`,"").toLowerCase();
-			
-			if (genre === null || genre === "") {
-				i--;
-			} else {
-				personalMovieDB.geners[i - 1] = genre;
-			}
-		}
-		personalMovieDB.geners.forEach((item, i) => {
-			console.log(`Genre number ${i + 1} is ${item}`);
-		});
-	}
+// }
 
+// isBudgetEnough(shoppingMallData);
+
+
+// const students = ['Peter', 'Andrew', 'Ann', 'Mark', 'Josh', 'Sandra', 'Cris', 'Bernard', 'Takesi', 'Sam', 'Alex'];
+
+// function sortStudentsByGroups(arr) {
+// 	arr.sort();
+// 	const a = [], b = [], c = [], rest = [];
+
+// 	for (let i = 0; i < arr.length; i++) {
+// 		if (i < 3) {
+// 			a.push(arr[i]);
+// 		} else if (i < 6) {
+// 			b.push(arr[i]);
+// 		} else if (i < 9) {
+// 			c.push(arr[i]);
+// 		} else {
+// 			rest.push(arr[i]);
+// 		}
+// 	}
+
+// 	let result = [
+// 		a, b, c, `Left students: ${rest.length === 0 ? '-' : rest.join(', ')}`
+// 	];
+	
+// 	return result;
+// }
+
+// console.log(sortStudentsByGroups(students)); 
+
+
+const restorantData = {
+	menu: [
+		{
+			name: 'Salad Caesar',
+			price: '14$'
+		},
+		{
+			name: 'Pizza Diavola',
+			price: '9$',
+		},
+		{
+			name: 'Beefstake',
+			price: '17$'
+		},
+		{
+			name: 'Napoleon',
+			price: '7$'
+		}
+	],
+	waitors: [	
+		{name: 'Alice', age: 22}, {name: 'John', age: 24}
+	],
+	averageLunchPrice: '20$',
+	openNow: true
 };
 
-console.log(personalMovieDB.start());
-console.log(personalMovieDB.rememberMyFilms());
-console.log(personalMovieDB.detectPersonalLevel());
-console.log(personalMovieDB.showMyDB());
-console.log(personalMovieDB.writeYourGenres());
+function isOpen(prop) {
+	let answer = '';
+	prop ? answer = 'Open' : answer = 'Closed';
+
+	return answer;
+}
+
+console.log(isOpen(restorantData.openNow));
+
+
+function isAverageLunchPriceTrue(fDish, sDish, average) {
+	if (+fDish.price.slice(0, -1) + (+sDish.price.slice(0, -1)) < (+average.slice(0, -1))) {
+		return 'Price lower than avergae';
+	} else {
+		return 'Price higher than avergae';
+	}
+}
+
+console.log(isAverageLunchPriceTrue(restorantData.menu[0], restorantData.menu[1], restorantData.averageLunchPrice));
+
+function tranfserWaitors(data) {
+	const copy = Object.assign({}, data);
+
+	copy.waitors = [{name: 'Mike', age: 32}];
+	return copy;
+}
+
+
+
+
+console.log(tranfserWaitors(restorantData));
+
+console.log(restorantData);
